@@ -1,0 +1,24 @@
+{
+  "name": "nodeserver",
+  "version": "0.0.1",
+  "description": "Vi skal opbygge en node server fra grunden.",
+  "main": "controller.js",
+  "dependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wartoc1/H5ServersideScripting.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wartoc1/H5ServersideScripting/issues"
+  },
+  "homepage": "https://github.com/Wartoc1/H5ServersideScripting#readme"
+}
