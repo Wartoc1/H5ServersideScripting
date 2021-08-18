@@ -21,7 +21,7 @@ module.exports = function(req, res){ // 2 argument
     }
 
         //hvis jeg er her er der ikke fundet et match
-    const apiRX = /^\/api\/\w+$/;
+    const apiRX = /^(\/api\/\w+)((\/w)*)$/;
     result = endpoint.match(apiRX);
     //console.log(result);
     if (result){
