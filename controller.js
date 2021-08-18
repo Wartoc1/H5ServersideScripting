@@ -1,5 +1,10 @@
 const helpers = require("./helpers")
 const logger = require("./logger");
+const api = {};
+
+api["/api/duck"] = require("./api/duck");
+api["/api/cat"] = require("./api/cat");
+
 module.exports = function(req, res){ // 2 argument
 
     logger(req, res);
@@ -13,6 +18,23 @@ module.exports = function(req, res){ // 2 argument
         //helpers.sendFile(req, res, "./static/" + result[0]);
         helpers.streamFile(req, res, "./static/" + result[0]);
         return;
+    }
+
+        //hvis jeg er her er der ikke fundet et match
+    const apiRX = /^\/api\/\w+$/;
+    result = endpoint.match(apiRX);
+    //console.log(result);
+    if (result){
+        //hvis jeg er her er der fundet et match
+        if(api[result[0]]) {
+            if(api[result[0]][req.method]){
+                api[result[0]][req.method].handler(req,res);
+                return;
+                
+            }
+            helpers.send(req,res, {msg: "metode ikke tilladt her"}, 405);
+            return;
+        }
     }
 
     console.log(result);
